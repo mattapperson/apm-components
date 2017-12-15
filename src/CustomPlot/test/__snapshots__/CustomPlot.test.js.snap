@@ -36,9 +36,9 @@ exports[`when response has data Initially should have correct markup 1`] = `
 "
 <div>
   <div>
-    <div class=\\"sc-htoDjs kTDeMd\\">
+    <div class=\\"sc-htpNat efAdPk\\">
     </div>
-    <div class=\\"sc-dnqmqq jHYWyk\\">
+    <div class=\\"sc-bxivhb hjzhOR\\">
       <div class=\\"sc-bdVaJa eWvHJG\\"
            font-size=\\"12px\\"
       >
@@ -47,9 +47,9 @@ exports[`when response has data Initially should have correct markup 1`] = `
               radius=\\"11\\"
         >
         </span>
-        <span class=\\"sc-iwsKbI ehWbsd\\">
+        <span class=\\"sc-ifAKCX kYeXMN\\">
           Avg.
-          <span class=\\"sc-gqjmRU eRtNVe\\">
+          <span class=\\"sc-bZQynM exvfdo\\">
             468 ms
           </span>
         </span>
@@ -62,7 +62,7 @@ exports[`when response has data Initially should have correct markup 1`] = `
               radius=\\"11\\"
         >
         </span>
-        <span class=\\"sc-iwsKbI ehWbsd\\">
+        <span class=\\"sc-ifAKCX kYeXMN\\">
           95th percentile
         </span>
       </div>
@@ -74,7 +74,7 @@ exports[`when response has data Initially should have correct markup 1`] = `
               radius=\\"11\\"
         >
         </span>
-        <span class=\\"sc-iwsKbI ehWbsd\\">
+        <span class=\\"sc-ifAKCX kYeXMN\\">
           99th percentile
         </span>
       </div>
@@ -990,9 +990,9 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
 "
 <div>
   <div>
-    <div class=\\"sc-htoDjs kTDeMd\\">
+    <div class=\\"sc-htpNat efAdPk\\">
     </div>
-    <div class=\\"sc-dnqmqq jHYWyk\\">
+    <div class=\\"sc-bxivhb hjzhOR\\">
       <div class=\\"sc-bdVaJa eWvHJG\\"
            font-size=\\"12px\\"
       >
@@ -1001,9 +1001,9 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
               radius=\\"11\\"
         >
         </span>
-        <span class=\\"sc-iwsKbI ehWbsd\\">
+        <span class=\\"sc-ifAKCX kYeXMN\\">
           Avg.
-          <span class=\\"sc-gqjmRU eRtNVe\\">
+          <span class=\\"sc-bZQynM exvfdo\\">
             468 ms
           </span>
         </span>
@@ -1016,7 +1016,7 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
               radius=\\"11\\"
         >
         </span>
-        <span class=\\"sc-iwsKbI ehWbsd\\">
+        <span class=\\"sc-ifAKCX kYeXMN\\">
           95th percentile
         </span>
       </div>
@@ -1028,7 +1028,7 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
               radius=\\"11\\"
         >
         </span>
-        <span class=\\"sc-iwsKbI ehWbsd\\">
+        <span class=\\"sc-ifAKCX kYeXMN\\">
           99th percentile
         </span>
       </div>
@@ -1327,13 +1327,13 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
      rv-hint--verticalAlign-top\\"
              style=\\"left: 432px; bottom: 32px; position: absolute;\\"
         >
-          <div class=\\"sc-htpNat jejoiB\\">
-            <div class=\\"sc-bxivhb etAnDE\\">
+          <div class=\\"sc-htoDjs HQvZY\\">
+            <div class=\\"sc-dnqmqq eCbMhD\\">
               1502283720
             </div>
-            <div class=\\"sc-ifAKCX gVdyMJ\\">
-              <div class=\\"sc-EHOje hxHpbH\\">
-                <div class=\\"sc-bZQynM bHRdln sc-bdVaJa eWvHJG\\"
+            <div class=\\"sc-iwsKbI kfJLnL\\">
+              <div class=\\"sc-gZMcBi ggSyZf\\">
+                <div class=\\"sc-gqjmRU glNReJ sc-bdVaJa eWvHJG\\"
                      font-size=\\"12px\\"
                 >
                   <span class=\\"sc-bwzfXH eirqQX\\"
@@ -1343,12 +1343,12 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
                   </span>
                   Avg.
                 </div>
-                <div class=\\"sc-gzVnrw zwJEr\\">
+                <div class=\\"sc-VigVT idcZSn\\">
                   438704.4
                 </div>
               </div>
-              <div class=\\"sc-EHOje hxHpbH\\">
-                <div class=\\"sc-bZQynM bHRdln sc-bdVaJa eWvHJG\\"
+              <div class=\\"sc-gZMcBi ggSyZf\\">
+                <div class=\\"sc-gqjmRU glNReJ sc-bdVaJa eWvHJG\\"
                      font-size=\\"12px\\"
                 >
                   <span class=\\"sc-bwzfXH xfxgn\\"
@@ -1358,12 +1358,12 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
                   </span>
                   95th
                 </div>
-                <div class=\\"sc-gzVnrw zwJEr\\">
+                <div class=\\"sc-VigVT idcZSn\\">
                   1557383.999999999
                 </div>
               </div>
-              <div class=\\"sc-EHOje hxHpbH\\">
-                <div class=\\"sc-bZQynM bHRdln sc-bdVaJa eWvHJG\\"
+              <div class=\\"sc-gZMcBi ggSyZf\\">
+                <div class=\\"sc-gqjmRU glNReJ sc-bdVaJa eWvHJG\\"
                      font-size=\\"12px\\"
                 >
                   <span class=\\"sc-bwzfXH inbJxo\\"
@@ -1373,7 +1373,7 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
                   </span>
                   99th
                 </div>
-                <div class=\\"sc-gzVnrw zwJEr\\">
+                <div class=\\"sc-VigVT idcZSn\\">
                   1820377.1200000006
                 </div>
               </div>
@@ -2000,9 +2000,9 @@ exports[`when response has no data Initially should have correct markup 1`] = `
 "
 <div>
   <div>
-    <div class=\\"sc-htoDjs kTDeMd\\">
+    <div class=\\"sc-htpNat efAdPk\\">
     </div>
-    <div class=\\"sc-dnqmqq jHYWyk\\">
+    <div class=\\"sc-bxivhb hjzhOR\\">
     </div>
   </div>
   <div style=\\"position: relative; height: 256px;\\">
