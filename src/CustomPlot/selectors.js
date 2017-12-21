@@ -48,7 +48,7 @@ function _getResponseTimeSeries(dates, avg, p95, p99, weightedAverage) {
       title: '99th percentile',
       titleShort: '99th',
       data: getChartValues(dates, p99),
-      type: 'area',
+      type: 'line',
       color: colors.apmOrange,
       areaColor: 'rgba(249, 133, 16, 0.1)' // apmOrange
     }

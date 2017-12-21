@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import toDiffableHtml from 'diffable-html';
 import d3 from 'd3';
 import { HistogramInner } from './Histogram';
-import { getFormattedBuckets } from './index';
+import getFormattedBuckets from '../utils/getFormattedBuckets';
 import response from './data/responseTime.json';
 import { getTimeFormatter, asDecimal, timeUnit } from '../formatters';
 

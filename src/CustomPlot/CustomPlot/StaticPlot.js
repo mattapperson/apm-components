@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import 'react-vis/dist/style.css';
@@ -12,72 +12,26 @@ import {
 } from 'react-vis';
 
 const X_TICK_TOTAL = 7;
-class StaticPlot extends PureComponent {
-  getSerie(serie) {
-    switch (serie.type) {
-      case 'line':
-        return (
-          <LineSeries
-            key={serie.title}
-            xType="time"
-            curve={'curveMonotoneX'}
-            data={serie.data}
-            color={serie.color}
-          />
-        );
-      case 'area':
-        return (
-          <AreaSeries
-            key={serie.title}
-            xType="time"
-            curve={'curveMonotoneX'}
-            data={serie.data}
-            color={serie.color}
-            stroke={serie.color}
-            fill={serie.areaColor}
-          />
-        );
-      default:
-        throw new Error(`Unknown type ${serie.type}`);
-    }
-  }
-
+class StaticPlot extends Component {
   render() {
-    const {
-      series,
-      tickFormatX,
-      tickFormatY,
-      XYPlot,
-      yTickValues
-    } = this.props;
-
-    const filteredSeries = series
-      .filter(serie => !serie.isEmpty)
-      .reverse()
-      .map(this.getSerie);
+    const {series, SVGPlot} = this.props
+  console.log(series)
 
     return (
-      <XYPlot>
-        <HorizontalGridLines tickValues={yTickValues} />
-        <XAxis tickSize={0} tickTotal={X_TICK_TOTAL} tickFormat={tickFormatX} />
-        <YAxis tickSize={0} tickValues={yTickValues} tickFormat={tickFormatY} />
-
-        {_.isEmpty(filteredSeries) ? (
-          <StatusText text="No data within this time range." />
-        ) : (
-          filteredSeries
-        )}
-      </XYPlot>
-    );
+      <SVGPlot>
+        <LineSeries
+            key={this.props.id}
+            xType="time"
+            curve={'curveMonotoneX'}
+            data={series.data}
+            color={series.color}
+          />
+      </SVGPlot>
+    )
   }
 }
-
 export default StaticPlot;
 
 StaticPlot.propTypes = {
-  series: PropTypes.array.isRequired,
-  tickFormatX: PropTypes.func,
-  tickFormatY: PropTypes.func.isRequired,
-  XYPlot: PropTypes.func.isRequired,
-  yTickValues: PropTypes.array.isRequired
+  //series: PropTypes.object.isRequired
 };

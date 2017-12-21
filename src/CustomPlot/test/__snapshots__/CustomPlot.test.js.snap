@@ -1293,20 +1293,20 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
              transform=\\"translate(80,16)\\"
           >
             <circle r=\\"5\\"
-                    cx=\\"352\\"
-                    cy=\\"189.74989696\\"
+                    cx=\\"305.06666666666666\\"
+                    cy=\\"191.5321727255814\\"
                     style=\\"opacity: 1; stroke: #3185fc; fill: #3185fc; stroke-width: 1;\\"
             >
             </circle>
             <circle r=\\"5\\"
-                    cx=\\"352\\"
-                    cy=\\"143.21282560000003\\"
+                    cx=\\"305.06666666666666\\"
+                    cy=\\"163.21082752\\"
                     style=\\"opacity: 1; stroke: #ecae23; fill: #ecae23; stroke-width: 1;\\"
             >
             </circle>
             <circle r=\\"5\\"
-                    cx=\\"352\\"
-                    cy=\\"132.27231180799998\\"
+                    cx=\\"305.06666666666666\\"
+                    cy=\\"158.76911232\\"
                     style=\\"opacity: 1; stroke: #f98510; fill: #f98510; stroke-width: 1;\\"
             >
             </circle>
@@ -1314,8 +1314,8 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
           <g transform=\\"translate(80,16)\\"
              class=\\"rv-xy-plot__grid-lines\\"
           >
-            <line x1=\\"352\\"
-                  x2=\\"352\\"
+            <line x1=\\"305.06666666666666\\"
+                  x2=\\"305.06666666666666\\"
                   y1=\\"0\\"
                   y2=\\"208\\"
                   class=\\"rv-xy-plot__grid-lines__line\\"
@@ -1325,11 +1325,11 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
         </svg>
         <div class=\\"rv-hint  rv-hint--horizontalAlign-right
      rv-hint--verticalAlign-top\\"
-             style=\\"left: 432px; bottom: 32px; position: absolute;\\"
+             style=\\"left: 385.06666666666666px; bottom: 32px; position: absolute;\\"
         >
           <div class=\\"sc-htoDjs HQvZY\\">
             <div class=\\"sc-dnqmqq eCbMhD\\">
-              1502283720
+              1502283600
             </div>
             <div class=\\"sc-iwsKbI kfJLnL\\">
               <div class=\\"sc-gZMcBi ggSyZf\\">
@@ -1344,7 +1344,7 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
                   Avg.
                 </div>
                 <div class=\\"sc-VigVT idcZSn\\">
-                  438704.4
+                  395861.23255813954
                 </div>
               </div>
               <div class=\\"sc-gZMcBi ggSyZf\\">
@@ -1359,7 +1359,7 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
                   95th
                 </div>
                 <div class=\\"sc-VigVT idcZSn\\">
-                  1557383.999999999
+                  1076662.7999999998
                 </div>
               </div>
               <div class=\\"sc-gZMcBi ggSyZf\\">
@@ -1374,7 +1374,7 @@ exports[`when response has data when setting hoverIndex should match snapshots 1
                   99th
                 </div>
                 <div class=\\"sc-VigVT idcZSn\\">
-                  1820377.1200000006
+                  1183434.8
                 </div>
               </div>
             </div>
