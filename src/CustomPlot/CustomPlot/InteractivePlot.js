@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import SelectionMarker from './SelectionMarker';
 
 import { MarkSeries, VerticalGridLines } from 'react-vis';
-import Tooltip from '../../Tooltip';
+import Tooltip from './tooltip';
 
 class InteractivePlot extends PureComponent {
   getMarkPoints = hoverIndex => {

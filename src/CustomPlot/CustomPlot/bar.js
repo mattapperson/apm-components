@@ -7,25 +7,21 @@ import {
   XAxis,
   YAxis,
   HorizontalGridLines,
-  LineSeries,
-  AreaSeries
+  VerticalBarSeries,
 } from 'react-vis';
 
 const X_TICK_TOTAL = 7;
 class StaticPlot extends Component {
   render() {
-    const {series, SVGPlot} = this.props
-  console.log(series)
+    const {data, color, SVGPlot, labelFormat} = this.props
 
     return (
       <SVGPlot>
-        <LineSeries
-            key={this.props.id}
-            xType="time"
-            curve={'curveMonotoneX'}
-            data={series.data}
-            color={series.color}
-          />
+        <VerticalBarSeries
+          key={this.props.id}
+          color={color}
+          data={data}
+        />
       </SVGPlot>
     )
   }
@@ -33,5 +29,9 @@ class StaticPlot extends Component {
 export default StaticPlot;
 
 StaticPlot.propTypes = {
-  //series: PropTypes.object.isRequired
+
+};
+
+StaticPlot.defaultProps = {
+
 };

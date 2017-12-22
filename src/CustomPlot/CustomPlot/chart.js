@@ -14,9 +14,6 @@ import { XYPlot } from 'react-vis';
 import { createSelector } from 'reselect';
 
 import Legends from './Legends';
-import StaticPlot from './StaticPlot';
-import InteractivePlot from './InteractivePlot';
-import VoronoiPlot from './VoronoiPlot';
 import { unit } from '../../variables';
 
 const VISIBLE_SERIES = 5;

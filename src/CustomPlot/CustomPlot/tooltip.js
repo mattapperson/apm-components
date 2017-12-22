@@ -12,8 +12,8 @@ import {
   borderRadius,
   fontSize,
   fontSizes
-} from '../variables';
-import Legend from '../Legend/Legend';
+} from '../../variables';
+import Legend from '../../Legend/Legend';
 
 const TooltipElm = styled.div`
   margin: 0 ${px(unit)};

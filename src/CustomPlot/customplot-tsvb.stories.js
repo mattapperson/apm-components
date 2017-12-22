@@ -16,9 +16,6 @@ class TwoCustomPlots extends React.Component {
     // Simulate http latency
     setTimeout(() => {
       this.setState({
-        responseTimeSeries: getResponseTimeSerieOrEmpty({
-          chartsData: response
-        }),
         rpmSeries: getRpmSeriesOrEmpty({
           chartsData: response,
           transactionType: 'requests'
@@ -58,7 +55,9 @@ class TwoCustomPlots extends React.Component {
         updatedData: 3
       })
     }, 1500)
+
     return (
+      <div>
       <Chart
         onHover={this.onHover}
         onMouseLeave={this.onMouseLeave}
@@ -67,10 +66,25 @@ class TwoCustomPlots extends React.Component {
         tickFormatY={this.getResponseTimeTickFormat}
         {...tickValues}
       >
-        <Line series={filteredSeries[2]} />
-        <Line series={filteredSeries[1]} />
-        <Line title="changeingValue" series={changeingValue} />
+        <Bar data={filteredSeries[3].data} color={filteredSeries[3].color} />
+        <Line data={filteredSeries[2].data} />
+        <Area data={filteredSeries[0].data} color={'pink'} />
+        <Line data={filteredSeries[1].data} />
+        <Line title="changeingValue" color={'red'} data={changeingValue.data} />
       </Chart>
+
+      <Chart
+        onHover={this.onHover}
+        onMouseLeave={this.onMouseLeave}
+        onSelectionEnd={this.onSelectionEnd}
+        hoverIndex={this.state.hoverIndex}
+        tickFormatY={this.getResponseTimeTickFormat}
+        {...tickValues}
+      >
+                <Line data={filteredSeries[3].data} />
+
+      </Chart>
+      </div>
     );
   }
 }
