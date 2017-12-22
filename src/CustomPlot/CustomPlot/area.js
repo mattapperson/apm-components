@@ -24,20 +24,9 @@ class StaticPlot extends Component {
           color={color}
           data={data}
         />
-        <LineSeries
-            key={`${this.props.id}-line`}
-            xType="time"
-            curve={curve}
-            data={data}
-            color={color}
-          />
-          {hasLineMarks && (
-            <MarkSeries 
-              data={data}
-              color={lineMarkColor}
-              size={lineMarkSize}
-            />
-          )}
+        <Line
+          {...this.props}
+        />
       </SVGPlot>
     )
   }
@@ -53,6 +42,6 @@ StaticPlot.propTypes = {
 
 StaticPlot.defaultProps = {
   ...Line.defaultProps,
-  opacity: 0.7
+  opacity: 0.2
 };
 

@@ -140,7 +140,7 @@ export class InnerCustomPlot extends PureComponent {
               xDomain={x.domain()}
               yDomain={y.domain()}
             >
-              <HorizontalGridLines tickValues={yTickValues} />
+              <HorizontalGridLines tickValues={yTickValues} style={{strokeDasharray: '5 5'}} />
               <XAxis
                 tickSize={0}
                 tickTotal={X_TICK_TOTAL}

@@ -19,18 +19,30 @@ class StaticPlot extends Component {
     return (
       <SVGPlot>
         <LineSeries
-            key={this.props.id}
-            xType="time"
-            curve={curve}
-            data={data}
-            color={color}
-          />
-          {hasLineMarks && (
-            <MarkSeries 
+              key={`${this.props.id}-border`}
+              xType="time"
+              curve={curve}
               data={data}
-              color={lineMarkColor}
-              size={lineMarkSize}
+              style={{strokeWidth: 4}}
+              color={'white'}
             />
+          <LineSeries
+              key={this.props.id}
+              xType="time"
+              curve={curve}
+              data={data}
+              style={{strokeWidth: 2}}
+              color={color}
+            />
+        
+          {hasLineMarks && (
+              <MarkSeries 
+                data={data}
+                color={color || lineMarkColor}
+                size={lineMarkSize}
+                stroke={'white'}
+                strokeWidth={2}
+              />
           )}
       </SVGPlot>
     )
@@ -48,10 +60,9 @@ StaticPlot.propTypes = {
 };
 
 StaticPlot.defaultProps = {
-  color: 'black',
+  color: '#3185fc',
   curve: 'linear',
   hasLineMarks: true,
-  lineMarkColor: 'black',
   lineMarkSize: 5
 };
 

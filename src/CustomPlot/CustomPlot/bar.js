@@ -20,6 +20,7 @@ class StaticPlot extends Component {
         <VerticalBarSeries
           key={this.props.id}
           color={color}
+          style={{rx: 2, ry: 2}}
           data={data}
         />
       </SVGPlot>
@@ -33,5 +34,5 @@ StaticPlot.propTypes = {
 };
 
 StaticPlot.defaultProps = {
-
+  color: '#3185fc'
 };

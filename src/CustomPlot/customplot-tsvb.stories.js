@@ -51,9 +51,11 @@ class TwoCustomPlots extends React.Component {
     var changeingValue = filteredSeries[this.state.updatedData || 0]
 
     setTimeout(() => {
-      this.setState({
-        updatedData: 3
-      })
+      if(this.state.updatedData !== 3) {
+        this.setState({
+          updatedData: 3
+        })
+      }
     }, 1500)
 
     return (
@@ -67,10 +69,8 @@ class TwoCustomPlots extends React.Component {
         {...tickValues}
       >
         <Bar data={filteredSeries[3].data} color={filteredSeries[3].color} />
-        <Line data={filteredSeries[2].data} />
-        <Area data={filteredSeries[0].data} color={'pink'} />
-        <Line data={filteredSeries[1].data} />
-        <Line title="changeingValue" color={'red'} data={changeingValue.data} />
+        <Area data={filteredSeries[0].data} color={'#db1374'} />
+        <Line title="changeingValue" color={'#00b3a4'} data={changeingValue.data} />
       </Chart>
 
       <Chart
@@ -81,7 +81,7 @@ class TwoCustomPlots extends React.Component {
         tickFormatY={this.getResponseTimeTickFormat}
         {...tickValues}
       >
-                <Line data={filteredSeries[3].data} />
+        <Line data={filteredSeries[3].data} />
 
       </Chart>
       </div>
