@@ -5,7 +5,8 @@ import {
   YAxis,
   HorizontalGridLines,
   LineSeries,
-  AreaSeries
+  AreaSeries,
+  Crosshair
 } from 'react-vis';
 import PropTypes from 'prop-types';
 import d3 from 'd3';
@@ -36,52 +37,12 @@ const getEnabledSeries = (props, seriesVisibility) => {
 const X_TICK_TOTAL = 7;
 export class InnerCustomPlot extends PureComponent {
   state = {
-    isDrawing: false,
-    selectionStart: null,
-    selectionEnd: null
+    crosshairValues: []
   };
-
-  onMouseLeave = (...args) => {
-    if (this.state.isDrawing) {
-      this.setState({ isDrawing: false });
-    }
-    this.props.onMouseLeave(...args);
-  };
-
-  onMouseDown = node =>
-    this.setState({
-      isDrawing: true,
-      selectionStart: node.x,
-      selectionEnd: null
-    });
-
-  onMouseUp = () => {
-    if (this.state.selectionEnd !== null) {
-      const [start, end] = [
-        this.state.selectionStart,
-        this.state.selectionEnd
-      ].sort();
-      this.props.onSelectionEnd({ start, end });
-    }
-    this.setState({ isDrawing: false });
-  };
-
-  onHover = node => {
-    const index = this.props.series[0].data.findIndex(
-      item => item.x === node.x
-    );
-    this.props.onHover(index);
-
-    if (this.state.isDrawing) {
-      this.setState({ selectionEnd: node.x });
-    }
-  };
-
-  clickLegend = i => {};
 
   getSVGPlot = _.memoize(
     (x, y, width) => {
-      function XYPlotWrapper({children}) {
+      function XYPlotWrapper({ children, data }) {
         return (
           <div style={{ position: 'absolute', top: 0, left: 0 }}>
             <XYPlot
@@ -105,7 +66,29 @@ export class InnerCustomPlot extends PureComponent {
     (x, y, width) => [...x.domain(), ...y.domain(), width].join('_')
   );
 
+  _onMouseLeave() {
+    this.setState({ crosshairValues: [] });
+  }
 
+  _onNearestX = name => value => {
+    console.log(name, value);
+    //this.setState({ crosshairValues: DATA.map(d => d[index]) });
+  };
+  recursiveMap(children, fn) {
+    return React.Children.map(children, child => {
+      if (!React.isValidElement(child)) {
+        return child;
+      }
+
+      if (child.props.children) {
+        child = React.cloneElement(child, {
+          children: recursiveMap(child.props.children, fn)
+        });
+      }
+
+      return fn(child);
+    });
+  }
   render() {
     var {
       chartTitle,
@@ -133,14 +116,19 @@ export class InnerCustomPlot extends PureComponent {
           <div style={{ position: 'absolute', top: 0, left: 0 }}>
             <XYPlot
               dontCheckIfEmpty
+              onMouseLeave={this._onMouseLeave}
               width={width}
+              animation={true}
               height={XY_HEIGHT}
               margin={XY_MARGIN}
               xType="time"
               xDomain={x.domain()}
               yDomain={y.domain()}
             >
-              <HorizontalGridLines tickValues={yTickValues} style={{strokeDasharray: '5 5'}} />
+              <HorizontalGridLines
+                tickValues={yTickValues}
+                style={{ strokeDasharray: '5 5' }}
+              />
               <XAxis
                 tickSize={0}
                 tickTotal={X_TICK_TOTAL}
@@ -151,10 +139,14 @@ export class InnerCustomPlot extends PureComponent {
                 tickValues={yTickValues}
                 tickFormat={tickFormatY}
               />
-              {React.Children.map(this.props.children, ((child, i) => React.cloneElement(child, { 
-                SVGPlot: this.getSVGPlot(x, y, width),
-                id:`chart-${i}`
-              })))}
+              {React.Children.map(this.props.children, (child, i) =>
+                React.cloneElement(child, {
+                  SVGPlot: this.getSVGPlot(x, y, width),
+                  onNearestX: this._onNearestX,
+                  id: `chart-${i}`
+                })
+              )}
+              <Crosshair values={this.state.crosshairValues} />
             </XYPlot>
           </div>
         </div>

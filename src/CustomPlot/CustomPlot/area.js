@@ -3,45 +3,54 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import 'react-vis/dist/style.css';
 import StatusText from './StatusText';
-import Line from './line'
-import {
-  AreaSeries,
-  LineSeries,
-  MarkSeries
-} from 'react-vis';
+import Line from './line';
+import { AreaSeries, LineSeries, MarkSeries, AbstractSeries } from 'react-vis';
 
 const X_TICK_TOTAL = 7;
-class StaticPlot extends Component {
+class StaticPlot extends AbstractSeries {
   render() {
-    const {data, opacity, SVGPlot, curve, hasLineMarks, lineMarkColor, lineMarkSize, color} = this.props
-
+    const {
+      name,
+      data,
+      curve,
+      hasLineMarks,
+      lineMarkColor,
+      lineMarkSize,
+      onNearestX,
+      color,
+      ...rest
+    } = this.props;
+    console.log(rest.getOpacity);
     return (
-      <SVGPlot>
+      <g>
         <AreaSeries
-          key={`${this.props.id}-area`}
+          {...rest}
+          key={`${name}-area`}
           curve={curve}
-          opacity={opacity}
+          _opacityValue={0.2}
           color={color}
           data={data}
         />
         <Line
-          {...this.props}
+          {...rest}
+          key={`${name}`}
+          curve={curve}
+          onNearestX={onNearestX(name)}
+          color={color}
+          data={data}
         />
-      </SVGPlot>
-    )
+      </g>
+    );
   }
 }
 export default StaticPlot;
 
-StaticPlot.propTypes = {
-  ...Line.propTypes,
-  opacity: PropTypes.number
+StaticPlot.displayName = 'EUIAreaSeries';
 
-  
+StaticPlot.propTypes = {
+  ...Line.propTypes
 };
 
 StaticPlot.defaultProps = {
-  ...Line.defaultProps,
-  opacity: 0.2
+  ...Line.defaultProps
 };
-

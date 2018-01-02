@@ -36,54 +36,62 @@ class TwoCustomPlots extends React.Component {
     var width = 100;
     var height = 100;
 
-    if(this.state.rpmSeries.length === 0) {
-      return <div>No data</div>
+    if (this.state.rpmSeries.length === 0) {
+      return <div>No data</div>;
     }
 
-    const tickValues = utils.getTickValues(
-      this.state.rpmSeries,
-      width,
-      height
-    );
+    const tickValues = utils.getTickValues(this.state.rpmSeries, width, height);
     const filteredSeries = this.state.rpmSeries
       .filter(serie => !serie.isEmpty)
       .reverse();
-    var changeingValue = filteredSeries[this.state.updatedData || 0]
+    var changeingValue = filteredSeries[this.state.updatedData || 0];
 
     setTimeout(() => {
-      if(this.state.updatedData !== 3) {
+      if (this.state.updatedData !== 3) {
         this.setState({
           updatedData: 3
-        })
+        });
       }
-    }, 1500)
+    }, 1500);
 
     return (
       <div>
-      <Chart
-        onHover={this.onHover}
-        onMouseLeave={this.onMouseLeave}
-        onSelectionEnd={this.onSelectionEnd}
-        hoverIndex={this.state.hoverIndex}
-        tickFormatY={this.getResponseTimeTickFormat}
-        {...tickValues}
-      >
-        <Bar data={filteredSeries[3].data} color={filteredSeries[3].color} />
-        <Area data={filteredSeries[0].data} color={'#db1374'} />
-        <Line title="changeingValue" color={'#00b3a4'} data={changeingValue.data} />
-      </Chart>
+        <Chart
+          onHover={this.onHover}
+          onMouseLeave={this.onMouseLeave}
+          onSelectionEnd={this.onSelectionEnd}
+          hoverIndex={this.state.hoverIndex}
+          tickFormatY={this.getResponseTimeTickFormat}
+          {...tickValues}
+        >
+          <Bar
+            name="Users"
+            data={filteredSeries[3].data}
+            color={filteredSeries[3].color}
+          />
+          <Area
+            name="Quitters"
+            data={filteredSeries[0].data}
+            color={'#db1374'}
+          />
+          <Line
+            name="Winners"
+            title="changeingValue"
+            color={'#00b3a4'}
+            data={changeingValue.data}
+          />
+        </Chart>
 
-      <Chart
-        onHover={this.onHover}
-        onMouseLeave={this.onMouseLeave}
-        onSelectionEnd={this.onSelectionEnd}
-        hoverIndex={this.state.hoverIndex}
-        tickFormatY={this.getResponseTimeTickFormat}
-        {...tickValues}
-      >
-        <Line data={filteredSeries[3].data} />
-
-      </Chart>
+        <Chart
+          onHover={this.onHover}
+          onMouseLeave={this.onMouseLeave}
+          onSelectionEnd={this.onSelectionEnd}
+          hoverIndex={this.state.hoverIndex}
+          tickFormatY={this.getResponseTimeTickFormat}
+          {...tickValues}
+        >
+          <Line name="Fun" data={filteredSeries[3].data} />
+        </Chart>
       </div>
     );
   }

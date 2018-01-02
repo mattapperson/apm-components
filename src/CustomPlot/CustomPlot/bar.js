@@ -8,31 +8,34 @@ import {
   YAxis,
   HorizontalGridLines,
   VerticalBarSeries,
+  AbstractSeries
 } from 'react-vis';
 
 const X_TICK_TOTAL = 7;
-class StaticPlot extends Component {
+class EUIBarSeries extends VerticalBarSeries {
   render() {
-    const {data, color, SVGPlot, labelFormat} = this.props
+    const { name, data, color, labelFormat, onNearestX, ...rest } = this.props;
 
     return (
-      <SVGPlot>
+      <g>
         <VerticalBarSeries
-          key={this.props.id}
+          key={name}
           color={color}
-          style={{rx: 2, ry: 2}}
+          onNearestX={onNearestX(name)}
+          style={{ rx: 2, ry: 2 }}
           data={data}
+          {...rest}
         />
-      </SVGPlot>
-    )
+      </g>
+    );
   }
 }
-export default StaticPlot;
+export default EUIBarSeries;
 
-StaticPlot.propTypes = {
-
+EUIBarSeries.propTypes = {
+  name: PropTypes.string.isRequired
 };
 
-StaticPlot.defaultProps = {
+EUIBarSeries.defaultProps = {
   color: '#3185fc'
 };
