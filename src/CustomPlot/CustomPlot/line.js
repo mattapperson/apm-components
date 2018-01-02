@@ -14,6 +14,15 @@ import {
 
 const X_TICK_TOTAL = 7;
 class EUILineSeries extends AbstractSeries {
+  constructor(props) {
+    super(props);
+    this.seriesDataAtIndex = this.seriesDataAtIndex.bind(this);
+    props.regesterSeriesDataCallback(props.name, this.seriesDataAtIndex);
+  }
+
+  seriesDataAtIndex = index => {
+    return this.props.data[index];
+  };
   render() {
     const {
       data,
@@ -26,7 +35,7 @@ class EUILineSeries extends AbstractSeries {
       color,
       ...rest
     } = this.props;
-    console.log(rest);
+
     return (
       <g>
         <LineSeries
@@ -36,7 +45,6 @@ class EUILineSeries extends AbstractSeries {
           curve={curve}
           data={data}
           opacity={1}
-          onNearestX={onNearestX(name)}
           style={{ strokeWidth: 4 }}
           _colorValue={'white'}
         />
@@ -57,6 +65,7 @@ class EUILineSeries extends AbstractSeries {
             key={`${name}-mark`}
             data={data}
             color={color || lineMarkColor}
+            onNearestX={onNearestX}
             size={lineMarkSize}
             stroke={'white'}
             opacity={1}

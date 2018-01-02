@@ -8,6 +8,17 @@ import { AreaSeries, LineSeries, MarkSeries, AbstractSeries } from 'react-vis';
 
 const X_TICK_TOTAL = 7;
 class StaticPlot extends AbstractSeries {
+  constructor(props) {
+    super(props);
+
+    this.seriesDataAtIndex = this.seriesDataAtIndex.bind(this);
+    props.regesterSeriesDataCallback(props.name, this.seriesDataAtIndex);
+  }
+
+  seriesDataAtIndex = index => {
+    return this.props.data[index];
+  };
+
   render() {
     const {
       name,
@@ -20,7 +31,7 @@ class StaticPlot extends AbstractSeries {
       color,
       ...rest
     } = this.props;
-    console.log(rest.getOpacity);
+
     return (
       <g>
         <AreaSeries
@@ -35,7 +46,7 @@ class StaticPlot extends AbstractSeries {
           {...rest}
           key={`${name}`}
           curve={curve}
-          onNearestX={onNearestX(name)}
+          onNearestX={onNearestX}
           color={color}
           data={data}
         />

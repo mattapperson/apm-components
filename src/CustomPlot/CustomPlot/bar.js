@@ -13,6 +13,15 @@ import {
 
 const X_TICK_TOTAL = 7;
 class EUIBarSeries extends VerticalBarSeries {
+  constructor(props) {
+    super(props);
+    this.seriesDataAtIndex = this.seriesDataAtIndex.bind(this);
+    props.regesterSeriesDataCallback(props.name, this.seriesDataAtIndex);
+  }
+
+  seriesDataAtIndex = index => {
+    return this.props.data[index];
+  };
   render() {
     const { name, data, color, labelFormat, onNearestX, ...rest } = this.props;
 
@@ -21,7 +30,7 @@ class EUIBarSeries extends VerticalBarSeries {
         <VerticalBarSeries
           key={name}
           color={color}
-          onNearestX={onNearestX(name)}
+          onNearestX={onNearestX}
           style={{ rx: 2, ry: 2 }}
           data={data}
           {...rest}

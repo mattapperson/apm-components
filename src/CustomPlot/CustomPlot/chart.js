@@ -36,18 +36,51 @@ const getEnabledSeries = (props, seriesVisibility) => {
 
 const X_TICK_TOTAL = 7;
 export class InnerCustomPlot extends PureComponent {
+  constructor(props) {
+    super(props);
+    this._onMouseLeave = this._onMouseLeave.bind(this);
+    this._onNearestX = this._onNearestX.bind(this);
+    this._getAllSeriesDataAtIndex = this._getAllSeriesDataAtIndex.bind(this);
+    this._itemsFormat = this._itemsFormat.bind(this);
+    this.seriesItems = {};
+  }
   state = {
     crosshairValues: []
   };
 
   _onMouseLeave() {
-    this.setState({ crosshairValues: [] });
+    this.setState({ crosshairValues: [], lastCrosshairIndex: null });
   }
 
-  _onNearestX = name => value => {
-    console.log(name, value);
-    //this.setState({ crosshairValues: DATA.map(d => d[index]) });
+  _onNearestX = (value, { index }) => {
+    if (this.state.lastCrosshairIndex === index) return;
+
+    this.setState({
+      crosshairValues: this._getAllSeriesDataAtIndex(index),
+      lastCrosshairIndex: index
+    });
   };
+
+  _regesterSeriesDataCallback = (name, fn) => {
+    this.seriesItems[name || 'Other'] = fn;
+  };
+
+  _getAllSeriesDataAtIndex = index => {
+    return Object.keys(this.seriesItems).map(name => {
+      return this.seriesItems[name](index);
+    });
+  };
+
+  _itemsFormat(values) {
+    return values.map((v, i) => {
+      if (v) {
+        return {
+          value: v.y,
+          title: Object.keys(this.seriesItems)[i] || 'Other'
+        };
+      }
+    });
+  }
 
   render() {
     var {
@@ -101,11 +134,16 @@ export class InnerCustomPlot extends PureComponent {
               />
               {React.Children.map(this.props.children, (child, i) =>
                 React.cloneElement(child, {
+                  regesterSeriesDataCallback: this._regesterSeriesDataCallback,
                   onNearestX: this._onNearestX,
                   id: `chart-${i}`
                 })
               )}
-              <Crosshair values={this.state.crosshairValues} />
+              <Crosshair
+                values={this.state.crosshairValues}
+                titleFormat={() => null}
+                itemsFormat={this._itemsFormat}
+              />
             </XYPlot>
           </div>
         </div>
