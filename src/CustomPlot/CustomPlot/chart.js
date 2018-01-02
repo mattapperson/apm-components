@@ -40,32 +40,6 @@ export class InnerCustomPlot extends PureComponent {
     crosshairValues: []
   };
 
-  getSVGPlot = _.memoize(
-    (x, y, width) => {
-      function XYPlotWrapper({ children, data }) {
-        return (
-          <div style={{ position: 'absolute', top: 0, left: 0 }}>
-            <XYPlot
-              dontCheckIfEmpty
-              width={width}
-              animation={true}
-              height={XY_HEIGHT}
-              margin={XY_MARGIN}
-              xType="time"
-              xDomain={x.domain()}
-              yDomain={y.domain()}
-            >
-              {children}
-            </XYPlot>
-          </div>
-        );
-      }
-
-      return XYPlotWrapper;
-    },
-    (x, y, width) => [...x.domain(), ...y.domain(), width].join('_')
-  );
-
   _onMouseLeave() {
     this.setState({ crosshairValues: [] });
   }
@@ -74,21 +48,7 @@ export class InnerCustomPlot extends PureComponent {
     console.log(name, value);
     //this.setState({ crosshairValues: DATA.map(d => d[index]) });
   };
-  recursiveMap(children, fn) {
-    return React.Children.map(children, child => {
-      if (!React.isValidElement(child)) {
-        return child;
-      }
 
-      if (child.props.children) {
-        child = React.cloneElement(child, {
-          children: recursiveMap(child.props.children, fn)
-        });
-      }
-
-      return fn(child);
-    });
-  }
   render() {
     var {
       chartTitle,
@@ -141,7 +101,6 @@ export class InnerCustomPlot extends PureComponent {
               />
               {React.Children.map(this.props.children, (child, i) =>
                 React.cloneElement(child, {
-                  SVGPlot: this.getSVGPlot(x, y, width),
                   onNearestX: this._onNearestX,
                   id: `chart-${i}`
                 })
